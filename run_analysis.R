@@ -10,7 +10,8 @@ library(dplyr)
 # Data Cleaning functions that need to be executed. Implementations below.
 mergedData <- MergeAndFilterTestAndTrainingSets()
 mergedDataWithActivityLabels <- JoinActivityNames(mergedData)
-GroupAndSummarize(mergedDataWithActivityLabels)
+cleanAccelerometerMeasurements <- GroupAndSummarize(mergedDataWithActivityLabels)
+write.table(cleanAccelerometerMeasurements, "data/tidyData.txt", row.names = FALSE)
 
 MergeAndFilterTestAndTrainingSets <- function() {
     # Setup some information that will be re-used by both training and test data sets during the merge
